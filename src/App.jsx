@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import Highligts from "./components/Highligts";
 import Navbar from "./components/Navbar";
+import VideoCarousel from "./components/VideoCarousel";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <Highligts />
+      <VideoCarousel />
     </main>
   );
 };
