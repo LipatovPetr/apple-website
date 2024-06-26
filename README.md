@@ -1,7 +1,7 @@
 # Project: iPhone Page
 
 ## Description
-A web application where I tried to replicate the signature Look & Feel of Apple pages.
+A web application where I tried to replicate the signature Look & Feel of Apple pages and animations.
 
 ## Tech Stack
 - React
