@@ -1,17 +1,16 @@
-# Проект: iPhone Page
+# Project: iPhone Page
 
-## Описание
-Веб-приложение, в котором я постарался повторить фирменный Look & Feel страниц Apple.
+## Description
+A web application where I tried to replicate the signature Look & Feel of Apple pages.
 
-## Технологический стек
+## Tech Stack
 - React
 - Tailwind
 - GSAP 
 - Three.js
 
-## Особенности
-- Анимированная видео-карусель 
-- Интерактивная 3d-модель iPhone
+## Highlights
+- Animated video carousel
+- Interactive 3D model of the iPhone
 
-[Ссылка на приложение](https://apple-website-eight-beryl.vercel.app/)
-
+[Link to the application](https://apple-website-eight-beryl.vercel.app/)
