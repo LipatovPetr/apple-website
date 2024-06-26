@@ -11,6 +11,6 @@ A web application where I tried to replicate the signature Look & Feel of Apple 
 
 ## Highlights
 - Animated video carousel
-- Interactive 3D model of the iPhone
+- Interactive iPhone 3D-model
 
 [Link to the application](https://apple-website-eight-beryl.vercel.app/)
