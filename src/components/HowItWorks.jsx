@@ -8,35 +8,28 @@ import { animateWithGsap } from "../utils/animations";
 
 const HowItWorks = () => {
   const videoRef = useRef();
-  const videoElement = videoRef.current;
 
   useGSAP(() => {
-    ScrollTrigger.create({
-      trigger: videoElement,
-      start: "top bottom",
-      onEnter: () => {
-        if (videoElement) {
-          videoElement.currentTime = 0;
-          videoElement.play();
-        }
-      },
-      onLeave: () => {
-        if (videoElement) {
-          videoElement.pause();
-        }
-      },
-      onEnterBack: () => {
-        if (videoElement) {
-          videoElement.currentTime = 0;
-          videoElement.play();
-        }
-      },
-      onLeaveBack: () => {
-        if (videoElement) {
-          videoElement.pause();
-        }
-      },
-    });
+    if (videoRef.current) {
+      ScrollTrigger.create({
+        trigger: videoRef.current,
+        start: "top bottom",
+        onEnter: () => {
+          videoRef.current.currentTime = 0;
+          videoRef.current.play();
+        },
+        onLeave: () => {
+          videoRef.current.pause();
+        },
+        onEnterBack: () => {
+          videoRef.current.currentTime = 0;
+          videoRef.current.play();
+        },
+        onLeaveBack: () => {
+          videoRef.current.pause();
+        },
+      });
+    }
 
     gsap.from("#chip", {
       scrollTrigger: {
