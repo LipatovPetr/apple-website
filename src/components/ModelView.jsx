@@ -20,23 +20,6 @@ const ModelView = ({
   size,
   item,
 }) => {
-  // useEffect(() => {
-  //   if (groupRef.current) {
-  //     ScrollTrigger.create({
-  //       trigger: groupRef.current,
-  //       start: "top 80%",
-  //       onEnter: () => {
-  //         gsap.to(groupRef.current.rotation, {
-  //           y: "+=1.5708", // 90 градусов (PI/2 радиан)
-  //           duration: 2, // Длительность анимации
-  //           delay: 2, // Задержка перед началом анимации
-  //           ease: "power2.inOut", // Плавная анимация
-  //         });
-  //       },
-  //     });
-  //   }
-  // }, []);
-
   return (
     <View
       index={index}
