@@ -6,15 +6,14 @@ A web application where I tried to replicate the signature Look & Feel of Apple 
 
 ## Tech Stack
 
-- React
-- Tailwind
-- GSAP
-- Three.js
+- React.js
+- GSAP (Greensock)
+- Vite
+- Tailwind CSS
 - Sentry
 
 ## Highlights
 
-- Interactive iPhone 3D-model
 - Animation Scroll Triggers
 - Performance & Error Tracking
 
