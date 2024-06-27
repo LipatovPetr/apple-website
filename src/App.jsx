@@ -16,7 +16,7 @@ const App = () => {
       <Hero />
       <Highligts />
       <VideoCarousel />
-      <Model />
+      {/* <Model /> */}
       <Features />
       <HowItWorks />
       <Footer />
