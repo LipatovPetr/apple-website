@@ -2,14 +2,9 @@ import { OrbitControls, PerspectiveCamera, View } from "@react-three/drei";
 
 import * as THREE from "three";
 import Lights from "./Lights";
-import Loader from "./Loader";
+
 import IPhone from "./Iphone";
-import { Suspense, useEffect } from "react";
-
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+// import { Suspense, useEffect } from "react";
 
 const ModelView = ({
   index,
@@ -48,13 +43,11 @@ const ModelView = ({
         name={`${index === 1} ? 'small' : 'large`}
         position={[0, 0, 0]}
       >
-        <Suspense fallback={<Loader />}>
-          <IPhone
-            scale={index === 1 ? [15, 15, 15] : [17, 17, 17]}
-            item={item}
-            size={size}
-          />
-        </Suspense>
+        <IPhone
+          scale={index === 1 ? [15, 15, 15] : [17, 17, 17]}
+          item={item}
+          size={size}
+        />
       </group>
     </View>
   );
