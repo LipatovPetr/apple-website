@@ -1,5 +1,7 @@
+import Features from "./components/Features";
 import Hero from "./components/Hero";
 import Highligts from "./components/Highligts";
+import HowItWorks from "./components/HowItWorks";
 import Model from "./components/Model";
 import Navbar from "./components/Navbar";
 import VideoCarousel from "./components/VideoCarousel";
@@ -14,6 +16,8 @@ const App = () => {
       <Highligts />
       <VideoCarousel />
       <Model />
+      <Features />
+      <HowItWorks />
     </main>
   );
 };
