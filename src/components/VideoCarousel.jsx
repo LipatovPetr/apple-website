@@ -54,72 +54,75 @@ const VideoCarousel = () => {
     });
   }, [isEnd, videoId]);
 
-  useEffect(() => {
-    let currentProgress = 0;
-    let span = videoSpanRef.current;
+  useEffect(
+    function animateIndicator() {
+      let currentProgress = 0;
+      let span = videoSpanRef.current;
 
-    if (span[videoId]) {
-      // animation to move the indicator
-      let anim = gsap.to(span[videoId], {
-        onUpdate: () => {
-          // get the progress of the video
-          const progress = Math.ceil(anim.progress() * 100);
+      if (span[videoId]) {
+        // animation to move the indicator
+        let anim = gsap.to(span[videoId], {
+          onUpdate: () => {
+            // get the progress of the video
+            const progress = Math.ceil(anim.progress() * 100);
 
-          if (progress != currentProgress) {
-            currentProgress = progress;
+            if (progress != currentProgress) {
+              currentProgress = progress;
 
-            // set the width of the progress bar
-            gsap.to(videoDivRef.current[videoId], {
-              width:
-                window.innerWidth < 760
-                  ? "10vw" // mobile
-                  : window.innerWidth < 1200
-                  ? "10vw" // tablet
-                  : "4vw", // laptop
-            });
+              // set the width of the progress bar
+              gsap.to(videoDivRef.current[videoId], {
+                width:
+                  window.innerWidth < 760
+                    ? "10vw" // mobile
+                    : window.innerWidth < 1200
+                    ? "10vw" // tablet
+                    : "4vw", // laptop
+              });
 
-            // set the background color of the progress bar
-            gsap.to(span[videoId], {
-              width: `${currentProgress}%`,
-              backgroundColor: "white",
-            });
-          }
-        },
+              // set the background color of the progress bar
+              gsap.to(span[videoId], {
+                width: `${currentProgress}%`,
+                backgroundColor: "white",
+              });
+            }
+          },
 
-        // when the video is ended, replace the progress bar with the indicator and change the background color
-        onComplete: () => {
-          if (isPlaying) {
-            gsap.to(videoDivRef.current[videoId], {
-              width: "12px",
-            });
-            gsap.to(span[videoId], {
-              backgroundColor: "#afafaf",
-            });
-          }
-        },
-      });
+          // when the video is ended, replace the progress bar with the indicator and change the background color
+          onComplete: () => {
+            if (isPlaying) {
+              gsap.to(videoDivRef.current[videoId], {
+                width: "12px",
+              });
+              gsap.to(span[videoId], {
+                backgroundColor: "#afafaf",
+              });
+            }
+          },
+        });
 
-      if (videoId == 0) {
-        anim.restart();
+        if (videoId == 0) {
+          anim.restart();
+        }
+
+        // update the progress bar
+        const animUpdate = () => {
+          anim.progress(
+            videoElementsRef.current[videoId]?.currentTime /
+              hightlightsSlides[videoId].videoDuration
+          );
+        };
+
+        if (isPlaying) {
+          // ticker to update the progress bar
+          gsap.ticker.add(animUpdate);
+        } else {
+          // remove the ticker when the video is paused (progress bar is stopped)
+          gsap.ticker.remove(animUpdate);
+        }
       }
-
-      // update the progress bar
-      const animUpdate = () => {
-        anim.progress(
-          videoElementsRef.current[videoId]?.currentTime /
-            hightlightsSlides[videoId].videoDuration
-        );
-      };
-
-      if (isPlaying) {
-        // ticker to update the progress bar
-        gsap.ticker.add(animUpdate);
-      } else {
-        // remove the ticker when the video is paused (progress bar is stopped)
-        gsap.ticker.remove(animUpdate);
-      }
-    }
-  }, [videoId, startPlay, isPlaying]);
+    },
+    [videoId, startPlay, isPlaying]
+  );
 
   // This useEffect hook ensures that videos are paused or played based on user interactions and loaded data.
   // - If loadedData array has length > 3 (we got 4 videos),

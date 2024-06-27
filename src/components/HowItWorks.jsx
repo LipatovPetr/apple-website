@@ -2,12 +2,42 @@ import React, { useRef } from "react";
 import { chipImg, frameImg, frameVideo } from "../utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 import { animateWithGsap } from "../utils/animations";
 
 const HowItWorks = () => {
   const videoRef = useRef();
+  const videoElement = videoRef.current;
 
   useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: videoElement,
+      start: "top bottom",
+      onEnter: () => {
+        if (videoElement) {
+          videoElement.currentTime = 0;
+          videoElement.play();
+        }
+      },
+      onLeave: () => {
+        if (videoElement) {
+          videoElement.pause();
+        }
+      },
+      onEnterBack: () => {
+        if (videoElement) {
+          videoElement.currentTime = 0;
+          videoElement.play();
+        }
+      },
+      onLeaveBack: () => {
+        if (videoElement) {
+          videoElement.pause();
+        }
+      },
+    });
+
     gsap.from("#chip", {
       scrollTrigger: {
         trigger: "#chip",
@@ -56,6 +86,7 @@ const HowItWorks = () => {
             </div>
             <div className="hiw-video">
               <video
+                id="gameVideo"
                 className="pointer-events-none"
                 playsInline
                 preload="none"
